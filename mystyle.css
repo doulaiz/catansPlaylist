@@ -38,6 +38,12 @@
 	padding: 80px 20px;
 }
 
+#main_div_parent
+{
+	width:100%;display: flex;
+    justify-content: center;
+}
+
 h3 {
 	text-align:center;
 	margin: 20px 0;
