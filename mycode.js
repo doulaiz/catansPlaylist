@@ -19,25 +19,24 @@ var global_buttons = [
 ]
 
 function create_buttons() {
+  t = document.getElementById("main_div");
 
-    t = document.getElementById("main_div");
+  for (let b = 0; b < global_buttons.length ; b++) {
+    let tr = document.createElement("button")
+    tr.setAttribute("class", "btn btn-outline-primary");
+    tr.innerHTML =  global_buttons[b].label;
 
-    for (let b = 0; b < global_buttons.length ; b++) {
-        let tr = document.createElement("button")
-        tr.setAttribute("class", "btn btn-outline-primary");
-        tr.innerHTML =  global_buttons[b].label;
+    tr.setAttribute("onclick", "on_click_play('" + global_buttons[b].sound + "')");
 
-        tr.setAttribute("onclick", "on_click_play('" + global_buttons[b].sound + "')");
-
-        t.appendChild(tr)
-    }
+    t.appendChild(tr)
+  }
 }
 
 function on_click_play(sound) {
   let ding = new Audio('sound/' + sound);
-	ding.play();
+  ding.play();
 }
 
 function on_load() {
-    create_buttons();
+  create_buttons();
 }

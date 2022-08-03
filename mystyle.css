@@ -1,50 +1,59 @@
 /* Arrange buttons */
 .btn-matrix {
-	flex-wrap: wrap; /* allow buttons to jump to another row */
+  flex-wrap: wrap;
+  /* allow buttons to jump to another row */
 }
+
 .btn-matrix > .btn {
-	width: 33%; /* force buttons to have the same width regardless of content */
-	min-height: 100px;
+  width: 33%;
+  /* force buttons to have the same width regardless of content */
+  min-height: 100px;
 }
+
 .btn-matrix > .btn:nth-child(3n + 4) {
-	margin-left: 0; /* because .btn-group adds `margin-left: -1px;` to all buttons */
+  margin-left: 0;
+  /* because .btn-group adds `margin-left: -1px;` to all buttons */
 }
+
 .btn-matrix > .btn:nth-child(n + 4) {
-	margin-top: -1px;
-	/* superimpose borders of the buttons from adjacent rows */
+  margin-top: -1px;
+  /* superimpose borders of the buttons from adjacent rows */
 }
 
 /* Fix border radius */
 .btn-matrix > .btn:first-child {
-	border-bottom-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
+
 .btn-matrix > .btn:nth-child(3) {
-	border-top-right-radius: 4px !important;
+  border-top-right-radius: 4px !important;
 }
+
 .btn-matrix > .btn:nth-last-child(3) {
-	border-bottom-left-radius: 4px !important;
+  border-bottom-left-radius: 4px !important;
 }
+
 .btn-matrix > .btn:last-child {
-	border-top-right-radius: 0;
+  border-top-right-radius: 0;
 }
 
 /* Decorations */
 .btn-matrix {
-	margin: 20px 10px;
-	/* max-width: 500px; */
+  margin: 20px 10px;
+  /* max-width: 500px; */
 }
 
 #main_div {
-	padding: 80px 20px;
+  padding: 80px 20px;
 }
 
-#main_div_parent
-{
-	width:100%;display: flex;
-    justify-content: center;
+#main_div_parent {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 h3 {
-	text-align:center;
-	margin: 20px 0;
+  text-align: center;
+  margin: 20px 0;
 }
