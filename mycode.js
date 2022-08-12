@@ -36,10 +36,27 @@ function create_buttons() {
   }
 }
 
+
 function on_click_play(sound) {
   let ding = new Audio('sound/' + sound);
+  ding.setAttribute("id", sound);
+  document.body.appendChild(ding);
+  ding.addEventListener('ended', (event) => {
+    document.getElementById(sound).remove()
+  });
   ding.play();
 }
+
+
+function on_stop_all() {
+  var audio_elts = document.querySelectorAll("audio");
+  audio_elts.forEach ( elt => {
+    elt.pause();
+    elt.currentTime = 0;
+    elt.remove();
+  });
+}
+
 
 function on_load() {
   create_buttons();
