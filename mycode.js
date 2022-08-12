@@ -9,12 +9,16 @@ class Bt {
 var global_buttons = [
   new Bt("We build this city", "build_city.mp3"),
   new Bt("She's a brick house", "brick_house.mp3"),
-  new Bt("Thick as a brick", "thick_as_a_brick.mp3"),
   new Bt("Country roads", "country_roads.mp3"),
+  new Bt("Imperial March", "imperial_march.mp3"),
   new Bt("On the road again", "road_again.mp3"),
+  new Bt("Thick as a brick", "thick_as_a_brick.mp3"),
   new Bt("We will rock you", "rock.mp3"),
   new Bt("Whool?", "sheep.mp3"),
   new Bt("I'm a wood", "wood.mp3"),
+  new Bt("Rolling in the deep", "rolling.mp3"),
+  new Bt("Jeopardy", "jeopardy.mp3"),
+  new Bt("What do you want?", "wannabe.mp3"),
   new Bt("We are the champions", "champions.mp3")
 ]
 
