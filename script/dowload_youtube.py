@@ -3,6 +3,9 @@ import youtube_dl
 from typing import List
 from pydub import AudioSegment
 
+# Script to download Youtube videos, convert them to mp3, and splice them to the right length to be used
+# in the music box.
+# Run this python script, and the copy paste the output into the mycode.js file
 
 def get_mp3_folder_absolute():
     return os.path.join(os.path.dirname(os.path.realpath(__file__)), "mp3")
@@ -13,6 +16,7 @@ def get_final_sound_folder():
 
 
 class Sound:
+    """The properties of a sound that needs to be extracted from a YT video"""
     def __init__(self, label, out_name, yt_url, beginning, end) -> None:
         self.label = label
         self.yt_url = yt_url
@@ -57,7 +61,7 @@ def dl_to_mp3(yt_url, name):
 
 
 def split_mp3(filename, beg, end):
-    # print("splitting " + filename)
+    print("splitting " + filename)
     try:
         sound = AudioSegment.from_file(filename)
     except:
@@ -69,13 +73,14 @@ def split_mp3(filename, beg, end):
 
 
 def dowload_all_sounds(sounds: List[Sound]):
+    output = ""
     for s in sounds:
         if not os.path.exists(s.filename_out):
             dl_to_mp3(s.yt_url, s.filename_out)
         split_mp3(s.filename_out, s.beginning, s.end)
-        print(
-            f"  new Bt(\"{s.label}\", \"{os.path.basename(s.filename_out)}\"),")
+        output += f"  new Bt(\"{s.label}\", \"{os.path.basename(s.filename_out)}\"),\n"
 
+    print ("\nMp3 files created. Copy-paste this onto ./mycode.js\n\x1b[33mvar global_buttons = [\n" + output[:-2] + "\n]\n\x1b[0m")
 
 if __name__ == "__main__":
     sounds = [
