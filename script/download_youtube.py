@@ -5,7 +5,7 @@ from pydub import AudioSegment
 
 # Script to download Youtube videos, convert them to mp3, and splice them to the right length to be used
 # in the music box.
-# Run this python script, and the copy paste the output into the mycode.js file
+# Updathe the list of songs in the main Run this python script, and then copy paste the output into the mycode.js file
 
 def get_mp3_folder_absolute():
     return os.path.join(os.path.dirname(os.path.realpath(__file__)), "mp3")
