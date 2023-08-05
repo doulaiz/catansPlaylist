@@ -93,7 +93,7 @@ if __name__ == "__main__":
         Sound("Thick as a brick", "thick_as_a_brick.mp3", "u9bk2MrMGaA", 53.5, 59.8),
         Sound("We will rock you", "rock.mp3", "-tJYN-eG1zk", 30.2, 34),
         Sound("Whool?", "sheep.mp3", "G_MubFgSHdI", 18, 22.9),
-        Sound("I'm a wood", "wood.mp3", "pSym-T6C1YA", 21, 25.8),
+        Sound("Piece of wood", "piece_of_wood.mp3", "qYoJoDlv6so", 140.5, 145.3),
         Sound("Rolling in the deep", "rolling.mp3", "rYEDA3JcQqw", 62.8, 67),
         Sound("Jeopardy",  "jeopardy.mp3", "0Wi8Fv0AJA4", 0.5, 31),
         Sound("What do you want?", "wannabe.mp3", "fw-QRyQcFH8", 7, 9.3),
