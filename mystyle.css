@@ -27,6 +27,10 @@ h3 {
   width: 99%;
 }
 
+.btn:nth-child(3n) {
+  margin-right: -1px;
+}
+
 .btn-matrix > .btn:nth-child(n + 4) {
   margin-top: -1px;
 }
@@ -60,7 +64,7 @@ h3 {
 }
 
 #main_div {
-  padding: 30px 20px;
+  padding: 20px;
 }
 
 #btn-stop {
