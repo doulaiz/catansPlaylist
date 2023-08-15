@@ -1,11 +1,11 @@
 import os
-import youtube_dl
+from pytube import YouTube
 from typing import List
 from pydub import AudioSegment
 
 # Script to download Youtube videos, convert them to mp3, and splice them to the right length to be used
 # in the music box.
-# Update the list of songs in the main function (See if __name__ == "__main__"), run this python script, 
+# Update the list of songs in the main function (See if __name__ == "__main__"), run this python script,
 # and then copy paste the output into the mycode.js file (../mycode.js)
 
 def get_mp3_folder_absolute():
@@ -39,26 +39,14 @@ class MyLogger(object):
 
 def dl_to_mp3(yt_url, name):
 
-    def my_hook(d):
-        if d['status'] == 'finished':
-            print('Done downloading, now converting ...')
+    yt = YouTube("v=" + yt_url)
 
-    ydl_opts = {
-        'format': 'bestaudio/best',
-        'postprocessors': [{
-            'key': 'FFmpegExtractAudio',
-            'preferredcodec': 'mp3',
-            'preferredquality': '192',
-        }],
+    # download only audio
+    sound = yt.streams.filter(only_audio=True).first()
+    out_file = sound.download(output_path="./mp3/")
 
-        'outtmpl': name,
-        'logger': MyLogger(),
-        'progress_hooks': [my_hook],
-    }
-
-    with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-        print("downloading " + name)
-        ydl.download(['https://www.youtube.com/watch?v=' + yt_url])
+    # save the file
+    os.rename(out_file, name)
 
 
 def split_mp3(filename, beg, end):
