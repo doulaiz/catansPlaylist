@@ -13,12 +13,22 @@
   min-height: 100px;
 }
 
-h3 {
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
-.btn:nth-child(3n+1):last-child, 
-.btn:nth-child(3n+1):nth-last-child(3), 
+.title {
+  font-family: inherit;
+  font-size: 2rem;
+  margin-top: 1rem;
+  margin-bottom: .5rem;
+  font-weight: 300;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.btn:nth-child(3n+1):last-child,
+.btn:nth-child(3n+1):nth-last-child(3),
 .btn:nth-child(3n+1):nth-last-child(2) {
   border-bottom-left-radius: 15px !important;
 }
@@ -54,13 +64,32 @@ h3 {
 }
 
 .btn {
-  border: solid 1px lightskyblue;
+  border: solid 1px #007bff;
+  color: #007bff;
+  background-color: transparent;
+  background-image: none;
   margin-left: -1px;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.span_txt {
+  margin: .3rem;
+}
+.btn.selected {
+  color: #fff;
+  background-color: #0062cc;
+  border-color: #005cbf;
+}
+
+.btn.stopping {
+  background-color: #dc3545;
+  transition: background-color 0.1s ease-out;
 }
 
 #main_div {
@@ -81,4 +110,3 @@ h3 {
   text-align: center;
   margin-top: 20px;
 }
-  

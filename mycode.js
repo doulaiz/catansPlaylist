@@ -32,6 +32,7 @@ function create_buttons() {
 
     let sp = document.createElement("span");
     sp.innerHTML = global_buttons[b].label;
+    sp.classList.add("span_txt");
     tr.appendChild(sp);
     tr.setAttribute("onclick", "on_click_play('" + global_buttons[b].sound + "')");
 
@@ -54,10 +55,10 @@ function on_click_play(sound) {
     ding.play();
 
     let div = document.getElementById("div_" + sound);
-    div.style.backgroundColor = "lightskyblue"
+    div.classList.add("selected")
   }
   else {
-    unselect_btn(current_play);
+    unselect_btn(current_play, true);
   }
 }
 
@@ -69,10 +70,16 @@ function who_is_playing() {
   return "";
 }
 
-function unselect_btn(sound_name) {
+function unselect_btn(sound_name, stopped_by_click=false) {
   let div = document.getElementById("div_" + sound_name);
-  div.style.backgroundColor = ""
-
+  if (stopped_by_click)
+  {
+    div.classList.add("stopping");
+    setTimeout(function(){
+      div.classList.remove("stopping");
+    }, 200);
+  }
+  div.classList.remove("selected");
 }
 
 function on_stop_all() {
@@ -83,7 +90,7 @@ function on_stop_all() {
     elt.remove();
 
     let div = document.getElementById("div_" + elt.id);
-    div.style.backgroundColor = ""
+    div.classList.remove("selected")
   });
 }
 
