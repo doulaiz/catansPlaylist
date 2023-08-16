@@ -81,6 +81,7 @@
 .span_txt {
   margin: .3rem;
 }
+
 .btn.selected {
   color: #fff;
   background-color: #0062cc;
@@ -105,9 +106,4 @@
   width: 100%;
   display: flex;
   justify-content: center;
-}
-
-h3 {
-  text-align: center;
-  margin-top: 20px;
 }

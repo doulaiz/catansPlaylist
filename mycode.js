@@ -70,12 +70,11 @@ function who_is_playing() {
   return "";
 }
 
-function unselect_btn(sound_name, stopped_by_click=false) {
+function unselect_btn(sound_name, stopped_by_click = false) {
   let div = document.getElementById("div_" + sound_name);
-  if (stopped_by_click)
-  {
+  if (stopped_by_click) {
     div.classList.add("stopping");
-    setTimeout(function(){
+    setTimeout(function () {
       div.classList.remove("stopping");
     }, 200);
   }
