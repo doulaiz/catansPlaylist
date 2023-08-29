@@ -28,6 +28,13 @@
   text-align: center;
 }
 
+.sub-title {
+  font-family: inherit;
+  font-size: 0.7rem;
+  text-align: center;
+  color: darkgrey;
+}
+
 .btn:nth-child(3n+1):last-child,
 .btn:nth-child(3n+1):nth-last-child(3),
 .btn:nth-child(3n+1):nth-last-child(2) {
