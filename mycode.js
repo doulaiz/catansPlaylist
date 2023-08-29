@@ -96,4 +96,7 @@ function on_stop_all() {
 
 function on_load() {
   create_buttons();
+  
+  var noSleep = new NoSleep();
+  noSleep.enable(); // keep the screen on!
 }
