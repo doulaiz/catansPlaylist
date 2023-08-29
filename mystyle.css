@@ -11,6 +11,7 @@
   width: 33%;
   /* force buttons to have the same width regardless of content */
   min-height: 100px;
+  flex: 1 1 auto;
 }
 
 :root {
@@ -31,14 +32,6 @@
 .btn:nth-child(3n+1):nth-last-child(3),
 .btn:nth-child(3n+1):nth-last-child(2) {
   border-bottom-left-radius: 15px !important;
-}
-
-.btn:nth-child(3n+1):last-child {
-  width: 99%;
-}
-
-.btn:nth-child(3n) {
-  margin-right: -1px;
 }
 
 .btn-matrix > .btn:nth-child(n + 4) {
@@ -95,7 +88,7 @@
 }
 
 #main_div {
-  padding: 20px;
+  padding-top: 20px;
 }
 
 #btn-stop {
