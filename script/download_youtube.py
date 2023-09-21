@@ -26,25 +26,11 @@ class Sound:
         self.end = end
 
 
-class MyLogger(object):
-    def debug(self, msg):
-        pass
-
-    def warning(self, msg):
-        pass
-
-    def error(self, msg):
-        print(msg)
-
-
 def dl_to_mp3(yt_url, name):
-
     yt = YouTube("v=" + yt_url)
-
     # download only audio
     sound = yt.streams.filter(only_audio=True).first()
     out_file = sound.download(output_path="./mp3/")
-
     # save the file
     os.rename(out_file, name)
 
@@ -55,7 +41,6 @@ def split_mp3(filename, beg, end):
         sound = AudioSegment.from_file(filename)
     except:
         sound = AudioSegment.from_file(filename, format="mp4")
-
     ret_sound = sound[int(beg*1000): int(end*1000)]
     ret_sound.export(os.path.join(get_final_sound_folder(),
                      os.path.basename(filename)), format="mp3")
