@@ -27,12 +27,17 @@ class Sound:
 
 
 def dl_to_mp3(yt_url, name):
-    yt = YouTube("v=" + yt_url)
+    yt = YouTube("v=" + yt_url, allow_oauth_cache=False, use_oauth=True)
     # download only audio
-    sound = yt.streams.filter(only_audio=True).first()
-    out_file = sound.download(output_path="./mp3/")
+    try:
+        sound = yt.streams.filter(only_audio=True).first()
+        out_file = sound.download(output_path="./mp3/")
+    except Exception as error:
+        print("An exception occurred:", error)
+        return False
     # save the file
     os.rename(out_file, name)
+    return True
 
 
 def split_mp3(filename, beg, end):
@@ -49,10 +54,12 @@ def split_mp3(filename, beg, end):
 def dowload_all_sounds(sounds: List[Sound]):
     output = ""
     for s in sounds:
-        if not os.path.exists(s.filename_out):
-            dl_to_mp3(s.yt_url, s.filename_out)
-        split_mp3(s.filename_out, s.beginning, s.end)
-        output += f"  new Bt(\"{s.label}\", \"{os.path.basename(s.filename_out)}\"),\n"
+        file_ok = os.path.exists(s.filename_out)
+        if not file_ok:
+            file_ok = dl_to_mp3(s.yt_url, s.filename_out)
+        if file_ok:
+            split_mp3(s.filename_out, s.beginning, s.end)
+            output += f"  new Bt(\"{s.label}\", \"{os.path.basename(s.filename_out)}\"),\n"
 
     print ("\nMp3 files created. Copy-paste this onto ./mycode.js\n\x1b[33mvar global_buttons = [\n" + output[:-2] + "\n]\n\x1b[0m")
 
@@ -60,16 +67,16 @@ if __name__ == "__main__":
     sounds = [
         Sound("We build this city", "build_city.mp3", "K1b8AhIsSYQ", 5.1, 7.8),
         Sound("She's a brick house", "brick_house.mp3", "rrBx6mAWYPU", 19.9, 25.5),
-        Sound("Country roads", "country_roads.mp3", "1vrEljMfXYo", 30.6, 33.1),
+        Sound("Country roads", "country_roads.mp3", "1vrEljMfXYo", 30.6, 33.3),
         Sound("Imperial March", "imperial_march.mp3", "u7HF4JG1pOg", 10.5, 20.1),
-        Sound("On the road again", "road_again.mp3", "dBN86y30Ufc", 10, 12.8),
+        Sound("On the road again", "road_again.mp3", "dBN86y30Ufc", 10, 13.0),
         Sound("Thick as a brick", "thick_as_a_brick.mp3", "u9bk2MrMGaA", 53.5, 59.8),
-        Sound("We will rock you", "rock.mp3", "-tJYN-eG1zk", 30.2, 34),
-        Sound("Whool?", "sheep.mp3", "G_MubFgSHdI", 18, 22.9),
+        Sound("We will rock you", "rock.mp3", "-tJYN-eG1zk", 30.2, 34.2),
+        Sound("Whool?", "sheep.mp3", "G_MubFgSHdI", 18, 23.1),
         Sound("Piece of wood", "piece_of_wood.mp3", "qYoJoDlv6so", 140.5, 145.3),
-        Sound("Rolling in the deep", "rolling.mp3", "rYEDA3JcQqw", 62.8, 67),
+        Sound("Rolling in the deep", "rolling.mp3", "rYEDA3JcQqw", 62.8, 67.5),
         Sound("Jeopardy",  "jeopardy.mp3", "0Wi8Fv0AJA4", 0.5, 31),
-        Sound("What do you want?", "wannabe.mp3", "fw-QRyQcFH8", 7, 9.3),
+        Sound("What do you want?", "wannabe.mp3", "fw-QRyQcFH8", 7, 9.4),
         Sound("We are the champions", "champions.mp3", "04854XqcfCY", 38.9, 46.2),
     ]
 
